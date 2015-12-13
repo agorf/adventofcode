@@ -2,13 +2,13 @@ seat_prefs = {}
 
 $stdin.each_line do |line|
   m = line.match(/(\w+) would (gain|lose) (\d+) happiness units by sitting next to (\w+)/)
-  name = m[1]
-  neighbor = m[4]
+  name1 = m[1]
+  name2 = m[4]
   units = m[3].to_i
   units *= -1 if m[2] == 'lose'
 
-  seat_prefs[name] ||= {}
-  seat_prefs[name][neighbor] = units
+  seat_prefs[name1] ||= {}
+  seat_prefs[name1][name2] = units
 end
 
 names = seat_prefs.keys
