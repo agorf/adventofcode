@@ -11,9 +11,7 @@ $stdin.each_line do |line|
   seat_prefs[name][neighbor] = units
 end
 
-names = seat_prefs.keys
-
-names.each do |name|
+names = seat_prefs.keys.each do |name|
   seat_prefs['Angelos'][name] = 0
   seat_prefs[name]['Angelos'] = 0
 end
