@@ -1,4 +1,4 @@
-reindeer_specs = $stdin.read.each_line.reduce({}) do |specs, line|
+reindeer_specs = $stdin.each_line.reduce({}) do |specs, line|
   data = line.match(%r{(\w+) can fly (\d+) km/s for (\d+) seconds?, but then must rest for (\d+)}).to_a
 
   specs.merge(
