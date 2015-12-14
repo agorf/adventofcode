@@ -1,8 +1,8 @@
-count = 0
-
-$stdin.each_line do |line|
+count = $stdin.each_line.reduce(0) do |count, line|
   if line =~ /([a-z]{2}).*\1/ && line =~ /([a-z])[a-z]\1/
-    count += 1
+    count + 1
+  else
+    count
   end
 end
 
