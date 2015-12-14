@@ -17,4 +17,4 @@ def reindeer_distance(reindeer_specs, race_duration)
     [(race_duration % round_duration) * reindeer_specs[:fly_speed], round_distance].min
 end
 
-puts reindeer_specs.map {|name, specs| reindeer_distance(specs, 2503) }.max
+puts reindeer_specs.values.map {|specs| reindeer_distance(specs, 2503) }.max
