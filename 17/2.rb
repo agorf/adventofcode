@@ -2,13 +2,9 @@ EGGNOG_LITERS = 150
 
 containers = $stdin.map(&:to_i)
 
-min_size = Float::INFINITY
-
-1.upto(containers.size) do |i|
-  containers.combination(i) do |combo|
-    if combo.reduce(:+) == EGGNOG_LITERS
-      min_size = [min_size, combo.size].min
-    end
+min_size = 1.upto(containers.size).find do |i|
+  containers.combination(i).find do |combo|
+    combo.reduce(:+) == EGGNOG_LITERS
   end
 end
 
