@@ -1,7 +1,7 @@
 $properties = $stdin.reduce({}) do |props, line|
   props.merge(
     line.split(':').first => Hash[
-      *line.split(': ').last.chop.split(/,? /).map.with_index {|val, i|
+      *line.split(': ').last.chomp.split(/,? /).map.with_index {|val, i|
         i % 2 == 0 ? val : val.to_i
       }
     ]

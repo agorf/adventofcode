@@ -12,7 +12,7 @@ sue = {
 }
 
 $stdin.each_line do |line|
-  number, rest = line.chop.sub('Sue ', '').split(': ', 2)
+  number, rest = line.chomp.sub('Sue ', '').split(': ', 2)
   properties = Hash[*rest.gsub(':', '').split(/,? /)]
 
   match = true

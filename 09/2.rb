@@ -1,7 +1,7 @@
 distances = {}
 
 $stdin.each_line do |line|
-  m = line.chop.match(/(\w+) to (\w+) = (\d+)/)
+  m = line.chomp.match(/(\w+) to (\w+) = (\d+)/)
   distances[m[1]] ||= {}
   distances[m[2]] ||= {}
   distances[m[1]][m[2]] = distances[m[2]][m[1]] = m[3].to_i

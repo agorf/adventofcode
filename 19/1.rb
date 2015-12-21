@@ -1,11 +1,11 @@
 require 'set'
 
-replacements, molecule = $stdin.read.chop.split("\n\n")
+replacements, molecule = $stdin.read.chomp.split("\n\n")
 
 molecules = Set.new
 
 replacements.each_line do |line|
-  pattern, replacement = line.chop.split(' => ')
+  pattern, replacement = line.chomp.split(' => ')
 
   i = -1
 

@@ -69,7 +69,7 @@ class Grid
   attr_reader :size
 end
 
-grid_ary = $stdin.reduce([]) {|grid, line| grid << line.chop.chars }
+grid_ary = $stdin.reduce([]) {|grid, line| grid << line.chomp.chars }
 grid = Grid.new(grid_ary)
 
 100.times do

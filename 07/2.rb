@@ -1,7 +1,7 @@
 $cache = {}
 
 $stdin.each_line do |line|
-  expr, name = line.chop.split(' -> ')
+  expr, name = line.chomp.split(' -> ')
 
   body = if m = expr.match(/\A([a-z]+) RSHIFT (\d+)\z/)
     -> { send(m[1]) >> m[2].to_i }

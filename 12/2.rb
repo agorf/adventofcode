@@ -19,6 +19,6 @@ def sum(data)
   end
 end
 
-input = JSON.parse($stdin.read.chop)
+input = JSON.parse($stdin.read.chomp)
 
 puts sum(input)

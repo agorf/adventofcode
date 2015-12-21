@@ -1,4 +1,4 @@
-password = $stdin.read.chop
+password = $stdin.read.chomp
 
 def valid_password?(pwd)
   pwd !~ /[iol]/ && # does not contain i, o, l

@@ -24,7 +24,7 @@ RINGS = {
 }
 
 BOSS = $stdin.reduce({}) {|stats, line|
-  key, val = line.chop.split(': ')
+  key, val = line.chomp.split(': ')
   stats.merge(key => val.to_i)
 }.freeze
 
