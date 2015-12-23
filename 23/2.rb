@@ -10,8 +10,8 @@ registers = { 'a' => 1, 'b' => 0 }
 i = 0
 
 while i < program.size do
-  line  = program[i]
-  data  = line.match(LINE_REGEX)
+  line = program[i]
+  data = line.match(LINE_REGEX)
   ioff = 1
 
   case data[:instruction]
