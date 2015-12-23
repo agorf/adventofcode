@@ -18,4 +18,4 @@ end
 
 input = $stdin.gets.to_i
 
-puts (1..Float::INFINITY).find {|f| presents_for(f.to_i) > input }
+puts (1..Float::INFINITY).find {|i| presents_for(i) > input }
