@@ -18,18 +18,28 @@ def recipe_score(recipe)
   head.zip(*tail).map {|prods| [prods.reduce(:+), 0].max }.reduce(:*)
 end
 
-# TODO make input-agnostic (the following assumes 4 ingredients)
-
 max_total_score = 0
+counters = [0] * $properties.size
 
-1.upto(100) do |i|
-  1.upto(100 - i) do |j|
-    1.upto(100 - (i + j)) do |k|
-      l = 100 - (i + j + k)
-      recipe = Hash[$properties.keys.zip([i, j, k, l])]
-      max_total_score = [max_total_score, recipe_score(recipe)].max
-    end
+loop do
+  increased = false
+
+  if counters.reduce(:+) == 100
+    recipe = Hash[$properties.keys.zip(counters)]
+    max_total_score = [max_total_score, recipe_score(recipe)].max
   end
+
+  -1.downto(-counters.size) do |i|
+    if counters[i] + 1 <= 100
+      counters[i] += 1
+      increased = true
+      break
+    end
+
+    counters[i] = 0
+  end
+
+  break unless increased
 end
 
 puts max_total_score
