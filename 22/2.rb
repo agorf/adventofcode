@@ -337,8 +337,14 @@ class Game
         player.damage!(1)
 
         if boss_won?
-          puts 'Player lost; incrementing...'
-          spell_generator.inc!
+          if unused_spells?
+            puts 'Player has unused spells; skipping...'
+            spell_generator.skip!
+          else
+            puts 'Player lost; incrementing...'
+            spell_generator.inc!
+          end
+
           break
         end
       end
