@@ -4,7 +4,7 @@ KEYPAD = [
   [  5,   6,   7,   8,   9],
   [nil, 'A', 'B', 'C', nil],
   [nil, nil, 'D', nil, nil],
-].freeze
+]
 
 key = [2, 0] # row, col
 code = []
