@@ -18,7 +18,7 @@ func main() {
 		hash := md5Hash(doorId + strconv.Itoa(i))
 
 		if strings.HasPrefix(hash, "00000") {
-			index := hash[5] - "0"[0]
+			index := hash[5] - '0'
 
 			if index >= 0 && index <= 7 && password[index] == 0 {
 				password[index] = hash[6]

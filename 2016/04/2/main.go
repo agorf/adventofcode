@@ -65,7 +65,7 @@ func roomChecksum(name string) string {
 	freq = make(map[byte]int)
 
 	for i := 0; i < len(name); i++ {
-		if name[i] != "-"[0] {
+		if name[i] != '-' {
 			freq[name[i]]++
 		}
 	}
@@ -88,10 +88,10 @@ func decryptRoom(name string, shift int) string {
 	byteShift := byte(shift % 26)
 
 	for i := 0; i < len(name); i++ {
-		if name[i] == "-"[0] {
-			decryptedName[i] = " "[0]
+		if name[i] == '-' {
+			decryptedName[i] = ' '
 		} else {
-			decryptedName[i] = "a"[0] + ((name[i] - "a"[0] + byteShift) % 26)
+			decryptedName[i] = 'a' + ((name[i] - 'a' + byteShift) % 26)
 		}
 	}
 

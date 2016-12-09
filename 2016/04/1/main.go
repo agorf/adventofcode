@@ -66,7 +66,7 @@ func roomChecksum(name string) string {
 	freq = make(map[byte]int)
 
 	for i := 0; i < len(name); i++ {
-		if name[i] != "-"[0] {
+		if name[i] != '-' {
 			freq[name[i]]++
 		}
 	}
