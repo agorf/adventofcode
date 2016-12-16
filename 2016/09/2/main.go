@@ -41,7 +41,6 @@ func decompressedLength(str string) (length int) {
 		if start == len(str) {
 			return
 		}
-
 	}
 
 	return
