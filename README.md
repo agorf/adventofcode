@@ -4,6 +4,6 @@
 > Each puzzle calls upon different skills and has two parts that build on a
 > theme.
 
-This repository contains my solutions written in Ruby.
+This repository contains my solutions written in Ruby and Go.
 
 More at http://adventofcode.com/
