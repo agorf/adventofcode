@@ -66,7 +66,7 @@ func (p Password) Permute() {
 	}
 }
 
-func (p *Password) Scramble(operations []string) {
+func (p Password) Scramble(operations []string) {
 	opsCount := len(operations)
 
 	for i := 0; i < opsCount; i++ {
