@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"strings"
 )
 
@@ -23,7 +24,7 @@ func main() {
 	end := Location{31, 39}
 	queue := []Job{Job{start, 0}}
 	processed := make(map[Location]bool)
-	minSteps := int(^uint(0) >> 1) // max int value
+	minSteps := math.MaxUint32
 
 	for len(queue) > 0 {
 		// dequeue

@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 )
 
@@ -29,7 +30,7 @@ func main() {
 	for i := 0; i < len(freqByCol); i++ {
 		var minChar byte
 
-		minCount := int(^uint(0) >> 1) // max int value
+		minCount := math.MaxUint32
 
 		for char, count := range freqByCol[i] {
 			if count < minCount {
