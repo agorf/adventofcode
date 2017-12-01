@@ -20,7 +20,7 @@ stdin.on('data', function (data) {
     }
 
     if (data[i] === data[next]) {
-      sum += parseInt(data[i]);
+      sum += parseInt(data[i], 10);
     }
   }
 
