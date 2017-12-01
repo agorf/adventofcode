@@ -12,7 +12,7 @@ stdin.on('data', function (data) {
 
   let sum = 0;
 
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < size; i++) {
     let next = i + 1;
 
     if (next >= size) {
