@@ -4,7 +4,7 @@
 > Each puzzle calls upon different skills and has two parts that build on a
 > theme.
 
-This repository contains my solutions written in Ruby (2015), Go (2016) and
-JavaScript (2017).
+This repository contains my solutions written in Ruby (2015), Go (2016),
+JavaScript (2017), Ruby (2018).
 
 More at http://adventofcode.com/
