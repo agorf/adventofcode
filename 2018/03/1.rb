@@ -5,7 +5,7 @@ FABRIC_SIZE = 1000
 fabric = Array.new(FABRIC_SIZE) { Array.new(FABRIC_SIZE, 0) }
 
 $stdin.each_line do |line|
-  _, x, y, w, h = line.match(/(\d+),(\d+): (\d+)x(\d+)/).to_a.map(&:to_i)
+  _, x, y, w, h = line.scan(/\d+/).map(&:to_i)
 
   (x...x + w).each do |i|
     (y...y + h).each do |j|

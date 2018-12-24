@@ -6,8 +6,7 @@ claims = Hash.new { |h, k| h[k] = [] }
 claim_ids = Set.new
 
 $stdin.each_line do |line|
-  _, id, x, y, w, h =
-    line.match(/(\d+) @ (\d+),(\d+): (\d+)x(\d+)/).to_a.map(&:to_i)
+  id, x, y, w, h = line.scan(/\d+/).map(&:to_i)
 
   (x...x + w).each do |i|
     (y...y + h).each do |j|
