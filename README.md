@@ -5,6 +5,6 @@
 > theme.
 
 This repository contains my solutions written in Ruby (2015), Go (2016),
-JavaScript (2017), Ruby (2018), Ruby (2019).
+JavaScript (2017), Ruby (2018), Ruby (2019), Ruby (2023).
 
 More at http://adventofcode.com/
