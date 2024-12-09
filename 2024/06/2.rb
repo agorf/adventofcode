@@ -11,11 +11,13 @@ class Map
 
   attr_reader :lines
 
-  def initialize(lines)
+  def initialize(lines, rows_size, cols_size)
     @lines = lines
     @guard_position = find_guard_position
-    @rows_size = lines.size
-    @cols_size = lines.first.size
+    @rows_size = rows_size
+    @cols_size = cols_size
+    @history = {}
+    @endless_loop = false
   end
 
   private def to_s
@@ -83,8 +85,17 @@ class Map
       return
     end
 
-    lines[new_row][new_col] = lines[row][col] # Move guard
+    guard = lines[row][col]
+
+    # Visited the same position with the same guard direction
+    if @history[[row, col]] == guard
+      @endless_loop = true
+    end
+
+    @history[[row, col]] = guard
+    lines[new_row][new_col] = guard # Move
     lines[row][col] = VISITED
+
     @guard_position = [new_row, new_col]
   end
 
@@ -92,19 +103,34 @@ class Map
     @guard_position.size == 2
   end
 
-  def visited_positions_count
-    lines.reduce(0) do |count, line|
-      line.chars.each do |char|
-        count += 1 if char == VISITED
-      end
-
-      count
-    end
+  def endless_loop?
+    @endless_loop
   end
 end
 
-map = Map.new($stdin.each_line.map(&:chomp))
+class Array
+  def deep_clone
+    Marshal.load(Marshal.dump(self))
+  end
+end
 
-map.advance! while map.guard?
+lines = $stdin.each_line.map(&:chomp)
+rows_size = lines.size
+cols_size = lines.first.size
+positions = 0
 
-puts map.visited_positions_count
+(0...rows_size).each do |row|
+  (0...cols_size).each do |col|
+    next if lines[row][col] == Map::OBSTACLE
+
+    lines_copy = lines.deep_clone
+    lines_copy[row][col] = Map::OBSTACLE
+
+    map = Map.new(lines_copy, rows_size, cols_size)
+    map.advance! while map.guard? && !map.endless_loop?
+
+    positions += 1 if map.endless_loop?
+  end
+end
+
+puts positions
