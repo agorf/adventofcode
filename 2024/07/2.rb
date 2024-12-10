@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-OPS = %w[+ *].freeze
+OPS = %w[+ * ||].freeze
 
 def rpn(input)
   stack = []
@@ -15,6 +15,9 @@ def rpn(input)
     when '*'
       a, b = stack.pop(2)
       stack.push(a * b)
+    when '||'
+      a, b = stack.pop(2)
+      stack.push("#{b}#{a}".to_i)
     else
       raise 'Unexpected character' # Should never happen
     end
