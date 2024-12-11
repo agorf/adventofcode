@@ -4,7 +4,7 @@ FREE = '.'.freeze
 
 def checksum(c_d_map)
   c_d_map.each_with_index.reduce(0) do |result, (c, i)|
-    break result if c == FREE
+    next result if c == FREE
 
     result + (i * c)
   end
@@ -12,17 +12,23 @@ end
 
 def compact!(d_map)
   (d_map.size - 1).downto(0) do |r|
-    next if d_map[r] == FREE
+    next if d_map[r][0] == FREE
 
     0.upto(r - 1) do |l|
-      next if d_map[l] != FREE
+      next unless d_map[l].include?(FREE) # Not free space
+      next if d_map[l].count { |c| c == FREE } < d_map[r].size # Not enough free space
 
-      d_map[l] = d_map[r]
-      d_map[r] = FREE
+      i = d_map[l].index(FREE)
+
+      # Move
+      0.upto(d_map[r].size - 1) do |j|
+        d_map[l][i + j] = d_map[r][j]
+        d_map[r][j] = FREE
+      end
     end
   end
 
-  d_map
+  d_map.flatten
 end
 
 def disk_map(input)
@@ -38,7 +44,7 @@ def disk_map(input)
       id += 1
     end
 
-    result.concat([x] * times)
+    result << ([x] * times)
   end
 end
 
