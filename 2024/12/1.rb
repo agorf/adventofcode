@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+# Access (safe)
 def a(map, (y, x))
   return unless (0...map.size).cover?(y)
   return unless (0...map[0].size).cover?(x)
